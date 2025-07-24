@@ -13,4 +13,4 @@ fclean:		clean
 re:		fclean all
 
 $(FILE).pdf: 	$(FILE).tex
-		xelatex $(FILE)
+		xelatex $(FILE) ; biber $(FILE) ; xelatex $(FILE)
