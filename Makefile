@@ -1,16 +1,12 @@
-# LaTeX Makefile
-FILE=		nicolas-dinquel-cv
+VENV   := .venv
+PYTHON := $(VENV)/bin/python
 
-all: 		$(FILE).pdf
+.PHONY: test
 
-.PHONY: 	clean
-clean:
-		rm -rf *.aux *.blg *.out *.bbl *.log *.bcf *.xml *~
+$(VENV): requirements.txt
+	python3 -m venv $(VENV)
+	$(PYTHON) -m pip install -q -r requirements.txt
+	touch $(VENV)
 
-fclean:		clean
-		rm -rf $(FILE).pdf
-
-re:		fclean all
-
-$(FILE).pdf: 	$(FILE).tex
-		xelatex $(FILE) ; biber $(FILE) ; xelatex $(FILE)
+test: $(VENV)
+	$(PYTHON) -m pytest -q
