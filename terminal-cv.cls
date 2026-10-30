@@ -12,6 +12,7 @@
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{enumitem}
 \RequirePackage{newunicodechar}
+\RequirePackage{graphicx}
 \RequirePackage{hyperref}
 
 \pagestyle{empty}
@@ -128,6 +129,9 @@
   {\cvsemibold\fontsize{10.8}{13.6}\selectfont#1}%
   \hfill{\ttfamily\fontsize{8.8}{13.6}\selectfont\color{cvmuted}#2}\par
   {\fontsize{9.2}{12}\selectfont\color{cvmuted}#3\par}}
+
+% Country flag after a location line, looked up as flags/<code>.png
+\newcommand\cvflag[1]{\hspace{3pt}\raisebox{-0.28em}{\includegraphics[height=1.35em]{flags/#1.png}}}
 
 \newlist{cvitems}{itemize}{1}
 \setlist[cvitems]{

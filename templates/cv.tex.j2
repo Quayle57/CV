@@ -45,7 +45,7 @@
 
 \cvsection{((( labels.experience )))}
 ((* for job in experience *))
-\cventry{((( job.role ))) — ((( job.company )))}{((( job.start | daterange(job.end) )))}{((( job.meta )))}
+\cventry{((( job.role ))) — ((( job.company )))}{((( job.start | daterange(job.end) )))}{((( job.meta )))\cvflag{((( job.flag )))}}
 \begin{cvitems}
 ((* for bullet in job.bullets *))
   \item ((( bullet )))
@@ -56,7 +56,7 @@
 
 \cvsection{((( labels.education )))}
 ((* for school in education *))
-\cventry{((( school.title )))}{((( school.start | daterange(school.get("end")) )))}{((( school.meta )))}
+\cventry{((( school.title )))}{((( school.start | daterange(school.get("end")) )))}{((( school.meta )))\cvflag{((( school.flag )))}}
 ((* if school.bullets is defined *))
 \begin{cvitems}
 ((* for bullet in school.bullets *))

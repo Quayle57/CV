@@ -32,7 +32,7 @@ en: nicolas-dinquel-cv-en.pdf
 $(TEXS): build/cv-%.tex: cv.yaml templates/cv.tex.j2 render.py | $(VENV)
 	$(PYTHON) render.py --lang $* --out $@
 
-nicolas-dinquel-cv-%.pdf: build/cv-%.tex terminal-cv.cls $(wildcard fonts/*.ttf)
+nicolas-dinquel-cv-%.pdf: build/cv-%.tex terminal-cv.cls $(wildcard fonts/*.ttf) $(wildcard flags/*.png)
 	TEXINPUTS=$(CURDIR): latexmk -xelatex -cd -interaction=nonstopmode -halt-on-error -silent $<
 	cp build/cv-$*.pdf $@
 

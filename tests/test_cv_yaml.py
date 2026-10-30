@@ -54,3 +54,11 @@ def test_cv_yaml_skill_items_lowercase():
     for group in CV["skills"]:
         for item in group["items"]:
             assert item == item.lower(), item
+
+
+def test_cv_yaml_flags_exist():
+    root = Path(__file__).parent.parent
+    entries = CV["experience"] + CV["education"]
+    assert all("flag" in e for e in entries), "every entry shows its country flag"
+    for e in entries:
+        assert (root / "flags" / f"{e['flag']}.png").is_file(), e["flag"]
