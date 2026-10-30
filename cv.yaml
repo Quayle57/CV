@@ -91,12 +91,18 @@ education:
       en: Information Technology Expert · Nancy, Paris
     start: 2011
     end: 2016
+    bullets:
+      - fr: École d'informatique en 5 ans, fondée sur les projets et un stage en entreprise chaque année
+        en: Five-year computer science school built around projects, with an internship every year
   - title: Keimyung University
     meta:
       fr: Année à l'étranger · Daegu, Corée du Sud
       en: Year abroad · Daegu, South Korea
     start: 2014
     end: 2015
+    bullets:
+      - fr: Début du projet de fin d'études, avec une équipe répartie dans plusieurs pays
+        en: Start of the final-year project, with a team spread across several countries
   - title:
       fr: GOBELINS — Formation UX Design
       en: GOBELINS — UX Design course

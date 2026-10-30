@@ -1,0 +1,69 @@
+((= Rendered by render.py once per language; values are LaTeX-escaped automatically. =))
+\def\cvfontdir{../fonts/}
+\documentclass{terminal-cv}
+((* if lang == "fr" *))
+\setmainlanguage{french}
+((* else *))
+\setmainlanguage[variant=british]{english}
+((* endif *))
+\hypersetup{
+  pdftitle={((( name.first ))) ((( name.last ))) — ((( title )))},
+  pdfauthor={((( name.first ))) ((( name.last )))},
+  pdflang={((( "fr-FR" if lang == "fr" else "en-GB" )))},
+}
+
+\begin{document}
+\begin{cvsidebar}
+\begin{cvwindow}{nicolas@dinquel: \textasciitilde{}}
+\cvcmd{whoami}
+\cvname{((( name.first )))}{((( name.last )))}
+\cvout{{\color{cvaccent}((( title )))}}
+
+\cvcmd{cat contact}
+\cvout{((( location )))}
+\cvout{\cvlink{((( contact.website )))}{((( contact.website )))}}
+\cvout{\cvlink{((( contact.linkedin )))}{((( contact.linkedin )))}}
+\cvout{\cvmail{((( contact.email )))}}
+
+((* for group in skills *))
+\cvcmd{ls skills/((( group.group )))}
+\cvout{((( group["items"] | join(" ") )))}
+
+((* endfor *))
+\cvcmd{locale}
+((* for l in languages *))
+\cvout{((( l.locale )))\quad\cvcomment{((( l.level )))}}
+((* endfor *))
+
+\cvcmd{ls \textasciitilde{}/homelab}
+\cvout{((( homelab | join(" ") )))}
+\cvprompt
+\end{cvwindow}
+\end{cvsidebar}%
+\begin{cvmain}
+\cvsummary{((( summary )))}
+
+\cvsection{((( labels.experience )))}
+((* for job in experience *))
+\cventry{((( job.role ))) — ((( job.company )))}{((( job.start | daterange(job.end) )))}{((( job.meta )))}
+\begin{cvitems}
+((* for bullet in job.bullets *))
+  \item ((( bullet )))
+((* endfor *))
+\end{cvitems}
+\cvtags{((* for tag in job.tags *))\cvtag{((( tag )))} ((* endfor *))}
+((* endfor *))
+
+\cvsection{((( labels.education )))}
+((* for school in education *))
+\cventry{((( school.title )))}{((( school.start | daterange(school.get("end")) )))}{((( school.meta )))}
+((* if school.bullets is defined *))
+\begin{cvitems}
+((* for bullet in school.bullets *))
+  \item ((( bullet )))
+((* endfor *))
+\end{cvitems}
+((* endif *))
+((* endfor *))
+\end{cvmain}
+\end{document}
