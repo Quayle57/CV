@@ -1,0 +1,21 @@
+# LaTeX
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.xdv
+*.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# Build
+build/
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Brainstorming / plan workspaces
+.superpowers/
