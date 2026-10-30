@@ -15,7 +15,7 @@ LANGUAGES := fr en
 PDFS      := $(LANGUAGES:%=nicolas-dinquel-cv-%.pdf)
 
 .PHONY: all fr en check clean
-.SECONDARY:
+.NOTINTERMEDIATE: build/cv-%.tex
 .DEFAULT_GOAL := all
 
 all: $(PDFS)
