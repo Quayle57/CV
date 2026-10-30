@@ -1,0 +1,106 @@
+# CV content, rendered into nicolas-dinquel-cv-{fr,en}.pdf.
+# A {fr: ..., en: ...} map is translated; any other value is shared by both languages.
+# Plain text only: render.py escapes LaTeX special characters.
+
+name: {first: Nicolas, last: Dinquel}
+title:
+  fr: Lead développeur Full-stack
+  en: Lead Full-stack Developer
+location: Metz, France
+
+contact:
+  email: nicolas.dinquel+cv@gmail.com
+  website: nicolas.dinquel.fr
+  linkedin: linkedin.com/in/dinquel
+
+summary:
+  fr: >-
+    Diplômé d'Epitech, je conçois et fais évoluer des applications web depuis plus de dix ans,
+    en Python, TypeScript et PHP : Django et Angular, et aujourd'hui aussi NestJS et Vue.js.
+    J'aime autant concevoir une API que soigner une interface, et je prends un vrai plaisir
+    à moderniser du code existant : migrations de frameworks, tests, réduction de la dette technique.
+  en: >-
+    An Epitech graduate, I have been designing and evolving web applications for over ten years,
+    in Python, TypeScript and PHP: Django and Angular, and now NestJS and Vue.js too.
+    I enjoy designing an API as much as polishing an interface, and I take real pleasure
+    in modernising existing code: framework migrations, tests, paying down technical debt.
+
+labels:
+  experience: {fr: Expérience, en: Experience}
+  education: {fr: Formation, en: Education}
+
+skills:
+  - group: back
+    items: [python, django, drf, celery, nestjs, php, wordpress]
+  - group: front
+    items: [angular, vue, typescript, rxjs, ssr, scss, ux]
+  - group: data
+    items: [postgresql, mysql, elasticsearch]
+  - group: ops
+    items: [docker, gitlab-ci, nginx, linux, git, claude-code]
+
+languages:
+  - locale: fr_FR
+    level: {fr: natif, en: native}
+  - locale: en_US
+    level: {fr: courant, en: fluent}
+
+homelab: [gitea, docker, home-assistant]
+
+experience:
+  - role:
+      fr: Lead développeur Full-stack
+      en: Lead Full-stack Developer
+    company: Yupeek
+    meta:
+      fr: Groupe Menway · Metz · après des stages en 2012 et 2014
+      en: Menway group · Metz · after internships in 2012 and 2014
+    start: 2016
+    end: now
+    bullets:
+      - fr: Plateformes emploi et recrutement du groupe, du back-end Django aux applications Angular, jusqu'au déploiement
+        en: The group's job and recruitment platforms, from the Django back-end to the Angular apps, all the way to deployment
+      - fr: "Produits : jobboard ReservoirJobs (Angular SSR), version CFA multi-campus, CVthèque Elasticsearch, Recrut, API REST interne, plugin WordPress"
+        en: "Products: ReservoirJobs job board (Angular SSR), multi-campus edition for apprenticeship schools, Elasticsearch resume database, Recrut, internal REST API, WordPress plugin"
+      - fr: "Modernisation : AngularJS → Angular, puis 15 → 20 (signals, SSR) · Django 2 → 4 · jQuery → ES6 et Webpack"
+        en: "Modernisation: AngularJS → Angular, then 15 → 20 (signals, SSR) · Django 2 → 4 · jQuery → ES6 and Webpack"
+      - fr: "ERP interne (PHP 8.3, ExtJS) : tests unitaires et refactoring du code legacy · performances front-end"
+        en: "Internal ERP (PHP 8.3, ExtJS): unit tests and legacy code refactoring · front-end performance"
+      - fr: "DevOps & IA : images Docker multi-stage, CI GitLab, Celery, développement assisté par IA (Claude Code)"
+        en: "DevOps & AI: multi-stage Docker images, GitLab CI, Celery, AI-assisted development (Claude Code)"
+    tags: [python, django, drf, nestjs, angular, vue.js, typescript, php, postgresql, elasticsearch, docker]
+
+  - role:
+      fr: Développeur front-end
+      en: Front-end Developer
+    company: Etix Everywhere
+    meta:
+      fr: Stage · Luxembourg
+      en: Internship · Luxembourg
+    start: 2015
+    end: 2016
+    bullets:
+      - fr: Front-end d'un outil de gestion technique centralisée pour data centers, ma première expérience avec AngularJS
+        en: Front-end of a centralised technical management tool for data centres, my first AngularJS project
+    tags: [angularjs, es6, docker, gulp]
+
+education:
+  - title: Epitech
+    meta:
+      fr: Expert en technologies de l'information · Nancy, Paris
+      en: Information Technology Expert · Nancy, Paris
+    start: 2011
+    end: 2016
+  - title: Keimyung University
+    meta:
+      fr: Année à l'étranger · Daegu, Corée du Sud
+      en: Year abroad · Daegu, South Korea
+    start: 2014
+    end: 2015
+  - title:
+      fr: GOBELINS — Formation UX Design
+      en: GOBELINS — UX Design course
+    meta:
+      fr: 72 heures · méthodologie UX, ergonomie, prototypage · Paris
+      en: 72 hours · UX methodology, ergonomics, prototyping · Paris
+    start: 2019
