@@ -1,5 +1,4 @@
 % terminal-cv.cls: one-page A4 CV with a terminal-window sidebar.
-% Look: docs/superpowers/specs/2026-10-30-terminal-cv-design.md
 % Fonts are loaded from \cvfontdir (define it before \documentclass).
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{terminal-cv}[2026/10/30 Terminal-style CV]
@@ -40,16 +39,16 @@
 \setmainfont{NotoSans}[
   Path=\cvfontdir, Extension=.ttf,
   UprightFont=*-Regular, BoldFont=*-Bold,
-  ItalicFont=*-Italic, BoldItalicFont=*-Bold]
+  ItalicFont=*-Regular, BoldItalicFont=*-Bold] % the CV never uses italics
 \setsansfont{NotoSans}[
   Path=\cvfontdir, Extension=.ttf,
   UprightFont=*-Regular, BoldFont=*-Bold,
-  ItalicFont=*-Italic, BoldItalicFont=*-Bold]
+  ItalicFont=*-Regular, BoldItalicFont=*-Bold] % the CV never uses italics
 \newfontfamily\cvsemibold{NotoSans-SemiBold}[Path=\cvfontdir, Extension=.ttf]
 \setmonofont{Hack}[
   Path=\cvfontdir, Extension=.ttf,
-  UprightFont=*-Regular, BoldFont=*-Bold,
-  ItalicFont=*-Regular, BoldItalicFont=*-Bold,
+  UprightFont=*-Regular, BoldFont=*-Regular, % monospace is never bold
+  ItalicFont=*-Regular, BoldItalicFont=*-Regular,
   Scale=MatchLowercase]
 % Noto Sans has no arrows: take them from Hack
 \newunicodechar{→}{{\ttfamily\symbol{8594}}}
