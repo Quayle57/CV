@@ -27,11 +27,15 @@ def localize(data: Any, lang: str, path: str = "") -> Any:
     """Replace every {fr: ..., en: ...} map with its value for `lang`."""
     if isinstance(data, dict):
         keys = set(data)
-        if keys == set(LANGS):
-            return localize(data[lang], lang, path)
-        if keys and keys <= set(LANGS):
-            missing = ", ".join(sorted(set(LANGS) - keys))
-            raise KeyError(f"{path or '<root>'}: missing translation for {missing}")
+        if keys & set(LANGS):
+            # Any map with a language key is a translation: exactly fr + en, both non-empty text.
+            if keys != set(LANGS):
+                raise KeyError(f"{path or '<root>'}: translation must have exactly the keys "
+                               f"{', '.join(LANGS)}, got {', '.join(sorted(map(str, keys)))}")
+            empty = [k for k in LANGS if not isinstance(data[k], str) or not data[k].strip()]
+            if empty:
+                raise KeyError(f"{path or '<root>'}: empty translation for {', '.join(empty)}")
+            return data[lang]
         return {k: localize(v, lang, f"{path}.{k}" if path else k) for k, v in data.items()}
     if isinstance(data, list):
         return [localize(v, lang, f"{path}[{i}]") for i, v in enumerate(data)]
@@ -39,8 +43,8 @@ def localize(data: Any, lang: str, path: str = "") -> Any:
 
 
 def latex_escape(value: Any) -> str:
-    if value is None:
-        return ""
+    if value is None or isinstance(value, (dict, list)):
+        raise TypeError(f"cannot render {type(value).__name__} as text: {value!r}")
     return "".join(_LATEX_SPECIALS.get(c, c) for c in str(value))
 
 

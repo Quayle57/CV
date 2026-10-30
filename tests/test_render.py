@@ -22,13 +22,31 @@ def test_localize_missing_language_raises():
         localize({"experience": [{"bullets": [{"fr": "x", "en": "y"}, {"fr": "seul"}]}]}, "en")
 
 
+@pytest.mark.parametrize("entry", [
+    {"fr": "Bonjour", "en": None},          # `en:` left empty
+    {"fr": "Bonjour", "en": ""},
+    {"fr": "Bonjour", "en": "  "},
+    {"fr": "Bonjour", "eng": "Hello"},      # typo
+    {"fr": "Bonjour", "en": "Hello", "eN": "x"},
+])
+def test_localize_rejects_bad_translation(entry):
+    with pytest.raises(KeyError, match=r"summary"):
+        localize({"summary": entry}, "en")
+
+
 def test_latex_escape_specials():
     assert latex_escape("a&b%c$d#e_f{g}h~i^j\\k") == (
         r"a\&b\%c\$d\#e\_f\{g\}h\textasciitilde{}i\textasciicircum{}j\textbackslash{}k"
     )
     assert latex_escape("nicolas.dinquel+cv@gmail.com") == "nicolas.dinquel+cv@gmail.com"
     assert latex_escape("Expérience → d'Epitech") == "Expérience → d'Epitech"
-    assert latex_escape(None) == ""
+    assert latex_escape(2016) == "2016"
+
+
+@pytest.mark.parametrize("value", [None, {"fr": "a", "en": "b"}, ["a"]])
+def test_latex_escape_rejects_non_scalars(value):
+    with pytest.raises(TypeError):
+        latex_escape(value)
 
 
 def test_date_range():
